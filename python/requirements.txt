@@ -1,0 +1,5 @@
+Django>=3.1
+#psycopg2
+psycopg2-binary
+sqlalchemy
+marshmallow-sqlalchemy

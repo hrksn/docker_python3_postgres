@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  python3:
+    container_name: "python_web"
+    restart: always
+    tty: true
+    build: ./python
+    #command: python3 manage.py runserver 0.0.0.0:8000
+    ports:
+     - 8000:8000
+    volumes:
+      - ./python:/code
+    links:
+      - db
+  db:
+    image: postgres:latest
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: 'trust'
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data
+    restart: always
+    stdin_open: true
